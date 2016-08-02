@@ -1,13 +1,14 @@
 <h1>Meine Aufgaben</h1>
 <p>Neue Aufgaben eintragen</p>
+<%= link_to 'Neue Aufgabe erstellen', new_item_path, class: 'btn btn-primary' %>
+<hr/>
 <p>
   <% @items.each do |item| %>
-    <div class="well">
-      <h3><%= item.title %></h3>
+      <h3><%= link_to item.title, item %></h3>
       <p><%= item.description %></p>
-      </div>
+
   <% end %>
 </p>
 
-<%= link_to 'Neue Aufgabe erstellen', new_item_path, class: 'btn btn-primary' %>
+
 
