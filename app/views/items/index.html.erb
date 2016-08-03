@@ -4,11 +4,32 @@
 <hr/>
 <p>
   <% @items.each do |item| %>
-      <h3><%= link_to item.title, item %></h3>
-      <p><%= item.description %></p>
-
+      <div class="well">
+      <div class="row item">
+        <% if !item.completed? %>
+            <div class="col-sm-6">
+              <h3 class="media-heading"><%= link_to item.title, item, title: item.title %></h3>
+              <small>Erstellt (<%= date_format item.created_at %> Uhr)</small>
+              <p><%= item.description %></p>
+            </div>
+            <div class="col-sm-6">
+              <%= link_to complete_item_path(item), method: :patch, class: 'btn btn-primary' do %>
+                  <i class="fa fa-check" aria-hidden="true"></i>
+              <% end %>
+            </div>
+        <% else %>
+            <div class="col-sm-6">
+              <h3 class="media-heading"><s><%= link_to item.title, item, title: item.title %></s></h3>
+              <small>(<%= date_format item.created_at %> Uhr)</small>
+            </div>
+            <div class="col-sm-6">
+              <h3 class="text-success">Erledigt <small>(<%= date_format item.completed_at %> Uhr)</small></h3>
+            </div>
+        <% end %>
+        </div>
+      </div>
   <% end %>
-</p>
+  </p>
 
 
 

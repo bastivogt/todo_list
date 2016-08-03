@@ -1,6 +1,7 @@
-<h1><%= @item.title %></h1>
+<h1><%= @item.title %> <small>(<%= date_format @item.created_at %> Uhr)</small></h1>
 <p><%= @item.description %></p>
 
-<%= link_to 'Zurück', root_path %>
-<%= link_to 'Editieren', edit_item_path %>
-<%= link_to 'Löschen', item_path(@item), method: :delete, data: {confirm: 'Bist du sicher?'} %>
+<%= link_to fa_icon('arrow-left'), root_path, class: 'btn btn-xs btn-primary', title: 'Zurück' %>
+<%= link_to fa_icon('pencil'), edit_item_path, class: 'btn btn-xs btn-primary', title: 'Edit' %>
+
+<%= link_to fa_icon('trash-o'), item_path(@item), method: :delete, data: {confirm: 'Bist du sicher?'}, title: 'Löschen', class: 'btn btn-xs btn-primary' %>
