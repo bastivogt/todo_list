@@ -22,8 +22,13 @@
               <h3 class="media-heading"><s><%= link_to item.title, item, title: item.title %></s></h3>
               <small>(<%= date_format item.created_at %> Uhr)</small>
             </div>
-            <div class="col-sm-6">
-              <h3 class="text-success">Erledigt <small>(<%= date_format item.completed_at %> Uhr)</small></h3>
+          <div class="col-sm-2">
+            <%= link_to uncomplete_item_path(item), method: :patch, class: 'btn btn-success' do %>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <% end %>
+          </div>
+            <div class="col-sm-4">
+              <h3 class="text-success media-heading">Erledigt <small>(<%= date_format item.completed_at %> Uhr)</small></h3>
             </div>
         <% end %>
         </div>

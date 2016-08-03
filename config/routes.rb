@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :items do
     member do
       patch :complete
+      patch :uncomplete
     end
   end
   root 'items#index'
